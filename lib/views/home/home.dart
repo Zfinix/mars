@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -61,7 +63,8 @@ class _HomePageState extends State<HomePage> {
                                       backgroundColor: Colors.white,
                                       radius: 4,
                                     ),
-                                  if (provider.selectedIndex == 0) const XMargin(10),
+                                  if (provider.selectedIndex == 0)
+                                    const XMargin(10),
                                   Text('Curiosity',
                                       style: GoogleFonts.cabin(
                                         textStyle: TextStyle(
@@ -85,7 +88,8 @@ class _HomePageState extends State<HomePage> {
                                       backgroundColor: Colors.white,
                                       radius: 4,
                                     ),
-                                  if (provider.selectedIndex == 1) const XMargin(10),
+                                  if (provider.selectedIndex == 1)
+                                    const XMargin(10),
                                   Text('Spirit',
                                       style: GoogleFonts.cabin(
                                         textStyle: TextStyle(
@@ -109,7 +113,8 @@ class _HomePageState extends State<HomePage> {
                                       backgroundColor: Colors.white,
                                       radius: 4,
                                     ),
-                                  if (provider.selectedIndex == 2) const XMargin(10),
+                                  if (provider.selectedIndex == 2)
+                                    const XMargin(10),
                                   Text('Opportunity',
                                       style: GoogleFonts.cabin(
                                         textStyle: TextStyle(
@@ -147,9 +152,11 @@ class _HomePageState extends State<HomePage> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(100),
                               ),
-                              onPressed: () => provider.selectCameraModal(context),
+                              onPressed: () =>
+                                  provider.selectCameraModal(context),
                               child: Text(
-                                  provider?.selectedCamera?.name ?? 'Choose a Camera',
+                                  provider?.selectedCamera?.name ??
+                                      'Choose a Camera',
                                   style: GoogleFonts.cabin(
                                     textStyle: TextStyle(
                                         color: Colors.white,
@@ -186,7 +193,6 @@ class _HomePageState extends State<HomePage> {
                               child: Text(
                                   provider.selectedDate != null
                                       ? '${DateFormat("MMMM, d y").format(provider.selectedDate)}'
-                                          
                                       : 'CHOOSE A DATE',
                                   style: GoogleFonts.cabin(
                                     textStyle: TextStyle(
@@ -221,8 +227,10 @@ class _HomePageState extends State<HomePage> {
                                           : 'SELECT DATE',
                                       style: GoogleFonts.cabin(
                                         textStyle: TextStyle(
-                                            color: provider?.selectedCamera != null &&
-                                                    provider?.selectedDate != null
+                                            color: provider?.selectedCamera !=
+                                                        null &&
+                                                    provider?.selectedDate !=
+                                                        null
                                                 ? Colors.white
                                                 : Colors.white38,
                                             fontSize: 13,
@@ -230,7 +238,7 @@ class _HomePageState extends State<HomePage> {
                                       )),
                                 ),
                         ],
-                      )
+                      ),const YMargin(30),
                     ],
                   ),
                 ],
@@ -256,7 +264,6 @@ class Curiosity extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const YMargin(40),
               Text('Mars',
                   style: GoogleFonts.bungeeOutline(
                     textStyle: TextStyle(
@@ -281,7 +288,8 @@ class Curiosity extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             physics: BouncingScrollPhysics(),
             children: [
-              const XMargin(40),
+             
+              XMargin(Platform.isIOS ? 40 : 80),
               Image.asset(
                 'assets/images/curiosity.png',
                 fit: BoxFit.cover,
@@ -334,11 +342,63 @@ class Spirit extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             physics: BouncingScrollPhysics(),
             children: [
-              const XMargin(80),
+              XMargin(Platform.isIOS ? 80 : 100),
               Image.asset(
                 'assets/images/spirit.png',
                 fit: BoxFit.cover,
                 height: screenHeight(context, percent: 0.3),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class Opportunity extends StatelessWidget {
+  const Opportunity({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 58.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const YMargin(40),
+              Text('Mars',
+                  style: GoogleFonts.bungeeOutline(
+                    textStyle: TextStyle(
+                      color: Colors.white,
+                      fontSize: 23,
+                    ),
+                  )),
+              Text('OPPORTUNITY',
+                  style: GoogleFonts.lato(
+                    textStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 41,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w900),
+                  )),
+            ],
+          ),
+        ),
+        Container(
+          height: screenHeight(context, percent: 0.4),
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            physics: BouncingScrollPhysics(),
+            children: [
+              XMargin(Platform.isIOS ? 40 : 60),
+              Image.asset(
+                'assets/images/curiosity.png',
+                fit: BoxFit.cover,
+                height: screenHeight(context, percent: 0.4),
               ),
             ],
           ),

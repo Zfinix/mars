@@ -12,7 +12,7 @@ class HomeViewModel extends ChangeNotifier {
   tabs() => [
         Curiosity(),
         Spirit(),
-        Curiosity(),
+        Opportunity(),
       ];
 
   int _selectedIndex = 0;

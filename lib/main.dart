@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,7 +9,6 @@ import 'core/services/providerRegistrar.dart';
 import 'views/splash.dart';
 
 void main() {
-
   runApp(MyApp());
 }
 
@@ -15,10 +16,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.white,
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Platform.isIOS ? Colors.white : Color(0xFFFA705F),
       statusBarBrightness: Brightness.dark,
-      systemNavigationBarColor: Colors.white,
+      systemNavigationBarColor:
+          Platform.isIOS ? Colors.white : Color(0xFFFA705F),
     ));
     return MultiProvider(
       providers: registerProviders,
@@ -30,8 +32,9 @@ class MyApp extends StatelessWidget {
             Theme.of(context).textTheme,
           ),
           primarySwatch: Colors.red,
-  backgroundColor: Colors.red, // status bar color
-  brightness: Brightness.light, // status bar brightness
+          primaryColor: Color(0xFFFA705F),
+          backgroundColor: Color(0xFFFA705F), // status bar color
+          brightness: Brightness.light, // status bar brightness
         ),
         home: Splash(),
       ),
