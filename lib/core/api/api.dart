@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:mars/core/const/const.dart';
+import 'package:mars/core/const/api_key.dart';
 import 'package:mars/core/model/nasa_rover_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:mars/widgets/dialogs.dart';

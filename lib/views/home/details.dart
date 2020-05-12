@@ -23,7 +23,6 @@ class _DetailsPageState extends State<DetailsPage> {
   Widget build(BuildContext context) {
     var provider = context.watch<HomeViewModel>();
     return Scaffold(
-      
       backgroundColor: Color(0xFFFA705F),
       body: Container(
         child: Stack(
@@ -106,8 +105,7 @@ class _DetailsPageState extends State<DetailsPage> {
             ),
             Column(
               children: [
-
-                  const YMargin(20),
+                const YMargin(20),
                 Container(
                   height: 90,
                   child: Row(
